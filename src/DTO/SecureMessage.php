@@ -41,7 +41,7 @@ class SecureMessage
         return $this->id;
     }
 
-    public function setId(string $id)
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
@@ -51,7 +51,7 @@ class SecureMessage
         return $this->message;
     }
 
-    public function setMessage(string $message)
+    public function setMessage(string $message): void
     {
         $this->message = $message;
     }
@@ -61,7 +61,7 @@ class SecureMessage
         return $this->requestsLimit;
     }
 
-    public function setRequestsLimit(int $requestsLimit)
+    public function setRequestsLimit(int $requestsLimit): void
     {
         $this->requestsLimit = $requestsLimit;
     }

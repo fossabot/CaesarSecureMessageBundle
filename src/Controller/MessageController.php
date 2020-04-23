@@ -39,12 +39,12 @@ class MessageController extends AbstractController
      * )
      *
      * @Route(
-     *     "/api/message",
-     *     name="message_create",
+     *     "/message",
+     *     name="security_message_message_create",
      *     methods={"POST"}
      * )
      *
-     * @param Request              $request
+     * @param Request $request
      * @param SecureMessageManager $messageManager
      *
      * @return array|FormInterface
@@ -83,12 +83,12 @@ class MessageController extends AbstractController
      * )
      *
      * @Route(
-     *     "/api/message/{id}",
-     *     name="get_message_by_id",
+     *     "/message/{id}",
+     *     name="security_message_get_message_by_id",
      *     methods={"GET"}
      * )
      *
-     * @param string               $id
+     * @param string $id
      * @param SecureMessageManager $messageManager
      *
      * @return SecureMessage
