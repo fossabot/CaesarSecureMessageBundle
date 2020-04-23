@@ -6,7 +6,16 @@
 composer require 4xxi/security-message
 ```
 
-2. Add configuration yaml into `config/routes/security_message.yaml` with following content:
+2. Add component into `config/bundles.php` with following content:
+```php
+return [
+//.............
+Fourxxi\SecurityMessageBundle\SecurityMessageBundle::class => ['all' => true],
+//.............
+];
+```
+
+3. Add the configuration yaml into `config/routes/security_message.yaml` with following content:
 ```yaml
 security_message_bundle:
   resource: '@SecurityMessageBundle/Controller/MessageController.php'
