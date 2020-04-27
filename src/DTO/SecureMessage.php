@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Fourxxi\SecurityMessageBundle\DTO;
+namespace Caesar\SecurityMessageBundle\DTO;
 
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Serializer\Annotation\Groups;

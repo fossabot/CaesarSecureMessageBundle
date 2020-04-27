@@ -1,9 +1,9 @@
 <?
 
-namespace Fourxxi\SecurityMessageBundle\DependencyInjection;
+namespace Caesar\SecurityMessageBundle\DependencyInjection;
 
 use Exception;
-use Fourxxi\SecurityMessageBundle\Service\SecureMessageManager;
+use Caesar\SecurityMessageBundle\Service\SecureMessageManager;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;

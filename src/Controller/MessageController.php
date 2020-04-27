@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Fourxxi\SecurityMessageBundle\Controller;
+namespace Caesar\SecurityMessageBundle\Controller;
 
-use Fourxxi\SecurityMessageBundle\DTO\SecureMessage;
-use Fourxxi\SecurityMessageBundle\Form\SecureMessageType;
-use Fourxxi\SecurityMessageBundle\Service\SecureMessageManager;
+use Caesar\SecurityMessageBundle\DTO\SecureMessage;
+use Caesar\SecurityMessageBundle\Form\SecureMessageType;
+use Caesar\SecurityMessageBundle\Service\SecureMessageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +23,7 @@ class MessageController extends AbstractController
      * @SWG\Parameter(
      *     name="body",
      *     in="body",
-     *     @Model(type="\Fourxxi\SecurityMessageBundle\Form\SecureMessageType")
+     *     @Model(type="\Caesar\SecurityMessageBundle\Form\SecureMessageType")
      * )
      * @SWG\Response(
      *     response=200,

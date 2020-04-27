@@ -1,7 +1,6 @@
 <?php
 
-
-namespace Fourxxi\SecurityMessageBundle\Service;
+namespace Caesar\SecurityMessageBundle\Service;
 
 
 interface ClientInterface

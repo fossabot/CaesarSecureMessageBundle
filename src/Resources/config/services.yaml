@@ -13,9 +13,9 @@ services:
 
   # controllers are imported separately to make sure services can be injected
   # as action arguments even if you don't extend any base controller class
-  Fourxxi\SecurityMessageBundle\Controller\MessageController:
+  Caesar\SecurityMessageBundle\Controller\MessageController:
     autoconfigure: true
 
-  Fourxxi\SecurityMessageBundle\Service\SecureMessageManager:
+  Caesar\SecurityMessageBundle\Service\SecureMessageManager:
     arguments:
       $serializer: '@serializer'

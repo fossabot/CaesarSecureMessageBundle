@@ -10,7 +10,7 @@ composer require 4xxi/security-message
 ```php
 return [
 //.............
-Fourxxi\SecurityMessageBundle\SecurityMessageBundle::class => ['all' => true],
+Caesar\SecurityMessageBundle\SecurityMessageBundle::class => ['all' => true],
 //.............
 ];
 ```
@@ -23,7 +23,7 @@ security_message_bundle:
   type: annotation
 ```
 
-4. Implement `Fourxxi/SecurityMessageBundle/Service/ClientInterface.php`
+4. Implement `Caesar/SecurityMessageBundle/Service/ClientInterface.php`
 
 5. Add the configuration yaml into `config/packages/security_message.yaml` with following content:
 ```yaml

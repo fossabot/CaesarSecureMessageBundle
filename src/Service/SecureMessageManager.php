@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Fourxxi\SecurityMessageBundle\Service;
+namespace Caesar\SecurityMessageBundle\Service;
 
-use Fourxxi\SecurityMessageBundle\DTO\SecureMessage;
+use Caesar\SecurityMessageBundle\DTO\SecureMessage;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class SecureMessageManager

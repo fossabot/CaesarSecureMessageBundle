@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Fourxxi\SecurityMessageBundle\Form;
+namespace Caesar\SecurityMessageBundle\Form;
 
-use Fourxxi\SecurityMessageBundle\DTO\SecureMessage;
+use Caesar\SecurityMessageBundle\DTO\SecureMessage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

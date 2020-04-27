@@ -1,5 +1,5 @@
 {
-    "name": "4xxi/security-message",
+    "name": "caesar/security-message-bundle",
     "description": "Security Message Bundle",
     "type": "symfony-bundle",
     "license": "proprietary",
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Fourxxi\\SecurityMessageBundle\\": "src/"
+            "Caesar\\SecurityMessageBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Fourxxi\\SecurityMessageBundle\\Tests\\": "tests/"
+            "Caesar\\SecurityMessageBundle\\Tests\\": "tests/"
         }
     },
     "conflict": {
