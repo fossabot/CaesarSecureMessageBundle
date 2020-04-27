@@ -8,11 +8,11 @@ interface ClientInterface
     /**
      * Set the string value in argument as value of the key.
      * @param string $key
-     * @param string $value
+     * @param mixed $value
      * @param int|null $timeout
      * @return bool
      */
-    public function set(string $key, ?string $value, int $timeout = null): bool;
+    public function set(string $key, $value, int $timeout = null): bool;
 
     /**
      * Get the value related to the specified key
