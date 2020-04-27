@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Fourxxi\SecurityMessageBundle\Service;
 
 use Fourxxi\SecurityMessageBundle\DTO\SecureMessage;
-use Predis\Client;
-use Redis;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class SecureMessageManager
@@ -16,31 +14,31 @@ class SecureMessageManager
     public const UNLIMITED_VALUE = -1;
 
     /**
-     * @var Client
+     * @var ClientInterface
      */
-    private $redis;
+    private $client;
 
     /**
      * @var SerializerInterface
      */
     private $serializer;
 
-    public function __construct(Redis $redis, SerializerInterface $serializer)
+    public function __construct(ClientInterface $client, SerializerInterface $serializer)
     {
-        $this->redis = $redis;
+        $this->client = $client;
         $this->serializer = $serializer;
     }
 
     public function save(SecureMessage $message): SecureMessage
     {
-        $redisId = $this->buildRedisId($message->getId());
+        $clientId = $this->buildId($message->getId());
         $limitId = $this->buildLimitId($message->getId());
-        $this->redis->set($redisId, $this->serialize($message));
-        $this->redis->set($limitId, $message->getRequestsLimit());
+        $this->client->set($clientId, $this->serialize($message));
+        $this->client->set($limitId, $message->getRequestsLimit());
 
         if (self::UNLIMITED_VALUE !== $message->getSecondsLimit()) {
-            $this->redis->expire($redisId, $message->getSecondsLimit());
-            $this->redis->expire($limitId, $message->getSecondsLimit());
+            $this->client->expire($clientId, $message->getSecondsLimit());
+            $this->client->expire($limitId, $message->getSecondsLimit());
         }
 
         return $message;
@@ -48,22 +46,22 @@ class SecureMessageManager
 
     public function has(string $id): bool
     {
-        $json = $this->redis->get($this->buildRedisId($id));
+        $json = $this->client->get($this->buildId($id));
 
         return null !== $json;
     }
 
     public function get($id): ?SecureMessage
     {
-        $redisId = $this->buildRedisId($id);
+        $clientId = $this->buildId($id);
 
-        $rawMessage = $this->redis->get($redisId);
+        $rawMessage = $this->client->get($clientId);
         if (false === $rawMessage) {
             return null;
         }
 
-        $ttl = $this->redis->ttl($redisId);
-        $attemptsLeft = (int)$this->redis->get($this->buildLimitId($id));
+        $ttl = $this->client->ttl($clientId);
+        $attemptsLeft = (int)$this->client->get($this->buildLimitId($id));
         $message = $this->deserialize($id, $rawMessage, $ttl, $attemptsLeft);
 
         if (self::UNLIMITED_VALUE !== $message->getRequestsLimit()) {
@@ -74,7 +72,7 @@ class SecureMessageManager
         return $message;
     }
 
-    public function buildRedisId(string $id): string
+    public function buildId(string $id): string
     {
         return $this::PREFIX . ':' . $id;
     }
@@ -103,7 +101,9 @@ class SecureMessageManager
 
     protected function decreaseLimit(SecureMessage $message): int
     {
-        return $this->redis->decr($this->buildLimitId($message->getId()));
+        $limit = $this->client->decr($this->buildLimitId($message->getId()));
+        $message->setRequestsLimit($limit);
+        return $limit;
     }
 
     /**
@@ -115,9 +115,9 @@ class SecureMessageManager
      */
     protected function deleteIfLastAttempt(SecureMessage $message): bool
     {
-        if ($message->getRequestsLimit()) {
-            $this->redis->del($this->buildRedisId($message->getId()));
-            $this->redis->del($this->buildLimitId($message->getId()));
+        if (!$message->getRequestsLimit()) {
+            $this->client->del($this->buildId($message->getId()));
+            $this->client->del($this->buildLimitId($message->getId()));
 
             return true;
         }

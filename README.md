@@ -21,7 +21,14 @@ security_message_bundle:
   resource: '@SecurityMessageBundle/Controller/MessageController.php'
   prefix: /
   type: annotation
+```
 
+4. Implement `Fourxxi/SecurityMessageBundle/Service/ClientInterface.php`
+
+5. Add the configuration yaml into `config/packages/security_message.yaml` with following content:
+```yaml
+security_message:
+  client: <Class that implemented ClientInterface>
 ```
 ## Usage
 ####Create new message:

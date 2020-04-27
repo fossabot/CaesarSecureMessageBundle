@@ -18,5 +18,4 @@ services:
 
   Fourxxi\SecurityMessageBundle\Service\SecureMessageManager:
     arguments:
-      $redis: '@snc_redis.default'
-
+      $serializer: '@serializer'
