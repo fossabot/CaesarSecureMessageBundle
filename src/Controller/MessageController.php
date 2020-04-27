@@ -73,7 +73,7 @@ class MessageController extends AbstractController
      *     response=200,
      *     description="Get message by id",
      *     @SWG\Schema(
-     *         @Model(type="\App\Model\DTO\SecureMessage")
+     *         @Model(type="\Caesar\SecurityMessageBundle\DTO\SecureMessage")
      *     )
      * )
      *
