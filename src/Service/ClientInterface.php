@@ -17,9 +17,10 @@ interface ClientInterface
     /**
      * Get the value related to the specified key
      * @param string $key
-     * @return string
+     * @return string|mixed|bool If key didn't exist, FALSE is returned.
+     * Otherwise, the value related to this key is returned
      */
-    public function get(string $key): string;
+    public function get(string $key);
 
     /**
      * Sets an expiration date (a timeout) on an item
