@@ -3,7 +3,7 @@
 ## Installation
 1. Install component via composer
 ```shell script
-composer require 4xxi/security-message
+composer require caesar/security-message-bundle
 ```
 
 2. Add component into `config/bundles.php` with following content:
